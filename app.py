@@ -52,7 +52,7 @@ div.stButton > button:hover {
 # ======================
 col_logo, col_title = st.columns([1, 6])
 with col_logo:
-    st.image("ocl_logo.png", width=130)
+    st.image("ocl_logo.png.jpeg", width=130)
 with col_title:
     st.markdown("""
     <h1 style='color:#4fa3ff;'>Optical Communication Laboratory</h1>
@@ -134,3 +134,4 @@ else:
     st.header("Welcome to Optical Communication Laboratory")
     st.write("Please select a menu above to explore.")
     st.markdown("</div>", unsafe_allow_html=True)
+
