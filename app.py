@@ -16,24 +16,30 @@ if "page" not in st.session_state:
     st.session_state.page = "home"
 
 # ======================
-# CUSTOM CSS (NAVY THEME)
+# FORCE FULL NAVY THEME
 # ======================
 st.markdown("""
 <style>
-/* Global background */
-body {
-    background-color: #081a33;
+
+/* ===== ROOT ===== */
+html, body, [class*="css"]  {
+    background-color: #081a33 !important;
 }
 
-.main {
-    background-color: #081a33;
+/* Main app */
+.stApp {
+    background-color: #081a33 !important;
+}
+
+/* Main content container */
+.main, .block-container {
+    background-color: #081a33 !important;
     color: #e6ecff;
 }
 
-/* Remove top padding */
+/* Remove white gaps */
 .block-container {
     padding-top: 0rem;
-    padding-bottom: 3rem;
 }
 
 /* HEADER */
@@ -44,25 +50,17 @@ body {
     border-bottom-right-radius: 70px;
 }
 
-/* NAV BUTTONS */
-.nav-btn button {
-    background: transparent;
-    border: none;
-    color: #e6ecff;
-    font-weight: 600;
+/* NAV BUTTON */
+button[kind="secondary"] {
+    background: transparent !important;
+    color: #ffffff !important;
+    border: none !important;
     font-size: 16px;
-    margin-left: 25px;
+    font-weight: 600;
 }
 
-.nav-btn button:hover {
-    color: #4fa3ff;
-}
-
-/* SECTION TITLE */
-.section-title {
-    font-size: 34px;
-    font-weight: 700;
-    color: #ffffff;
+button[kind="secondary"]:hover {
+    color: #4fa3ff !important;
 }
 
 /* CARD */
@@ -70,11 +68,16 @@ body {
     background: #0e2a55;
     border-radius: 20px;
     padding: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    color: #e6ecff;
+    box-shadow: 0 12px 30px rgba(0,0,0,.35);
 }
 
-/* SUBTITLE */
+/* TITLES */
+.section-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
 .subtitle {
     color: #ff6b6b;
     font-weight: 700;
@@ -110,12 +113,11 @@ with col_nav:
             st.session_state.page = "info"
 
 st.markdown('</div>', unsafe_allow_html=True)
+st.markdown("<br><br>", unsafe_allow_html=True)
 
 # ======================
 # CONTENT
 # ======================
-st.markdown("<br><br>", unsafe_allow_html=True)
-
 if st.session_state.page == "home":
     st.markdown("""
     <div style="padding:40px;">
@@ -152,16 +154,16 @@ if st.session_state.page == "home":
 
 elif st.session_state.page == "about":
     st.header("About Us")
-    st.write("Optical Communication Laboratory focuses on education and research in photonics and optical communication systems.")
+    st.write("Optical Communication Laboratory focuses on education and research in optical & photonic systems.")
 
 elif st.session_state.page == "team":
     st.header("Our Teams")
-    st.write("Our laboratory consists of lecturers, assistants, and researchers.")
+    st.write("Lecturers, assistants, and researchers of OCL.")
 
 elif st.session_state.page == "activity":
     st.header("Our Activity")
-    st.write("Practicum sessions, research projects, and academic activities.")
+    st.write("Practicum, research, and academic activities.")
 
 elif st.session_state.page == "info":
     st.header("Informations")
-    st.write("Laboratory schedules, announcements, and academic updates.")
+    st.write("Schedules, announcements, and updates.")
