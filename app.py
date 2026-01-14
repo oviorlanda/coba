@@ -3,135 +3,121 @@ import streamlit as st
 # ======================
 # PAGE CONFIG
 # ======================
-st.set_page_config(
-    page_title="Optical Communication Laboratory",
-    layout="wide"
-)
+st.set_page_config(layout="wide", page_title="Optical Communication Laboratory")
 
 # ======================
 # CUSTOM CSS
 # ======================
 st.markdown("""
 <style>
-body {
-    background-color: #0b132b;
+/* Remove default padding */
+.block-container {
+    padding-top: 0rem;
+    padding-bottom: 2rem;
 }
 
-.main {
-    background-color: #0b132b;
+/* HEADER */
+.header {
+    background: linear-gradient(135deg, #1f7ae0, #4fa3ff);
+    padding: 30px 60px;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* MENU */
+.menu a {
+    margin-left: 30px;
+    font-weight: 600;
     color: white;
+    text-decoration: none;
 }
 
-/* Top navigation buttons */
-div.stButton > button {
-    background-color: #1c77ff;
-    color: white;
-    border-radius: 8px;
-    height: 45px;
-    font-weight: bold;
-    border: none;
+.menu a:hover {
+    color: #ffdd57;
 }
 
-div.stButton > button:hover {
-    background-color: #4fa3ff;
-    color: black;
+/* SECTION TITLE */
+.section-title {
+    margin-top: 50px;
+    font-size: 32px;
+    font-weight: 700;
 }
 
-/* Card style */
+/* CARD */
 .card {
-    background-color: rgba(28, 119, 255, 0.15);
-    padding: 25px;
-    border-radius: 15px;
-    margin-top: 15px;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+body {
+    background-color: #f4f7fc;
 }
 </style>
 """, unsafe_allow_html=True)
 
 # ======================
-# LOGO + TITLE
+# HEADER
 # ======================
-col_logo, col_title = st.columns([1, 6])
-with col_logo:
-    st.image("ocl_logo.png.jpeg", width=130)
-with col_title:
+st.markdown("""
+<div class="header">
+    <div class="navbar">
+        <div>
+            <img src="ocl_logo.png.jpeg" width="90">
+        </div>
+        <div class="menu">
+            <a href="#home">About Us</a>
+            <a href="#team">Our Teams</a>
+            <a href="#activity">Our Activity</a>
+            <a href="#info">Informations</a>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
+# ======================
+# CONTENT
+# ======================
+st.markdown('<div id="home"></div>', unsafe_allow_html=True)
+
+st.markdown("""
+<div style="padding:60px;">
+    <p style="color:#cc3b3b; font-weight:600;">MODULE</p>
+    <h2 class="section-title">Our Module</h2>
+</div>
+""", unsafe_allow_html=True)
+
+# MODULE CARDS
+col1, col2, col3 = st.columns(3)
+
+with col1:
     st.markdown("""
-    <h1 style='color:#4fa3ff;'>Optical Communication Laboratory</h1>
-    <h4 style='color:#b3c7ff;'>Telkom University Bandung</h4>
+    <div class="card">
+        <h4>Optical Fiber</h4>
+        <p>Basic optical fiber transmission module.</p>
+    </div>
     """, unsafe_allow_html=True)
 
-st.markdown("---")
+with col2:
+    st.markdown("""
+    <div class="card">
+        <h4>WDM System</h4>
+        <p>Wavelength Division Multiplexing experiment.</p>
+    </div>
+    """, unsafe_allow_html=True)
 
-# ======================
-# TOP NAVIGATION
-# ======================
-nav = st.columns(5)
-
-with nav[0]:
-    home = st.button("HOME")
-with nav[1]:
-    about = st.button("ABOUT US")
-with nav[2]:
-    team = st.button("OUR TEAM")
-with nav[3]:
-    activity = st.button("OUR ACTIVITY")
-with nav[4]:
-    info = st.button("INFORMATIONS")
-
-# ======================
-# PAGE CONTENT
-# ======================
-if home:
-    st.markdown("<div class='card'>", unsafe_allow_html=True)
-    st.header("Welcome to OCL")
-    st.write("""
-    Optical Communication Laboratory (OCL) focuses on education,
-    research, and innovation in optical fiber communication systems.
-    """)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-elif about:
-    st.markdown("<div class='card'>", unsafe_allow_html=True)
-    st.header("About Us")
-    st.write("""
-    OCL is an academic laboratory under Telkom University
-    that supports learning and research in photonics
-    and optical communication.
-    """)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-elif team:
-    st.markdown("<div class='card'>", unsafe_allow_html=True)
-    st.header("Our Team")
-    st.write("""
-    Our team consists of lecturers, laboratory assistants,
-    and students passionate about optical communication.
-    """)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-elif activity:
-    st.markdown("<div class='card'>", unsafe_allow_html=True)
-    st.header("Our Activity")
-    st.write("""
-    - Practicum sessions  
-    - Research projects  
-    - Academic discussions  
-    - Optical system simulations
-    """)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-elif info:
-    st.markdown("<div class='card'>", unsafe_allow_html=True)
-    st.header("Informations")
-    st.write("""
-    📌 Laboratory schedules  
-    📌 Announcements  
-    📌 Research updates
-    """)
-    st.markdown("</div>", unsafe_allow_html=True)
-
-else:
-    st.markdown("<div class='card'>", unsafe_allow_html=True)
-    st.header("Welcome to Optical Communication Laboratory")
-    st.write("Please select a menu above to explore.")
-    st.markdown("</div>", unsafe_allow_html=True)
-
+with col3:
+    st.markdown("""
+    <div class="card">
+        <h4>Optical Network</h4>
+        <p>Optical access & backbone network module.</p>
+    </div>
+    """, unsafe_allow_html=True)
